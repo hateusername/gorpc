@@ -8,20 +8,24 @@ import (
 
 type Args struct {
 	//should have comment
-	sertype int
+	Sertype int
 }
 
 type Ret struct {
-	back string
+	Retback string
 }
 
 type Arith int
 
 func main() {
-	client, err := rpc.DialHTTP("tcp", "127.0.0.1:1234")
+	fmt.Println("这里是0")
+
+	client, err := rpc.DialHTTP("tcp", ":1234")
 	if err != nil {
 		log.Fatal("dialing", err)
 	}
+
+	fmt.Println("这里是1")
 
 	args := &Args{1}
 	var reply bool
@@ -29,7 +33,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Check error", err)
 	}
-	fmt.Printf("Check: type %d", args.sertype, reply)
+	fmt.Printf("Check: type %d", args.Sertype, reply)
 
 	args = &Args{0}
 	var getRet Ret
@@ -37,6 +41,6 @@ func main() {
 	if err != nil {
 		log.Fatal("Serve error:", err)
 	}
-	fmt.Printf("Serve %s", getRet.back)
+	fmt.Printf("Serve %s", getRet.Retback)
 
 }

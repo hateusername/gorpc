@@ -9,11 +9,11 @@ import (
 
 type Args struct {
 	//should have comment
-	sertype int
+	Sertype int
 }
 
 type Ret struct {
-	retBack string
+	Retback string
 }
 
 type Arith int
@@ -24,7 +24,7 @@ func (t *Arith) Check(args *Args, reply *bool) error {
 }
 
 func (t *Arith) Serve(args *Args, reply *Ret) error {
-	reply.retBack = string("服务类型为" + string(args.sertype))
+	reply.Retback = string("服务类型为" + string(args.Sertype))
 	return nil
 }
 
@@ -37,5 +37,5 @@ func main() {
 		log.Fatal("listen error", e)
 	}
 
-	go http.Serve(l, nil)
+	http.Serve(l, nil)
 }
